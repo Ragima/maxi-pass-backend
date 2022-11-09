@@ -1,0 +1,17 @@
+<p><%= I18n.t('mailer.reporting_mailer.report', report_owner: @report_owner_email) %></p>
+<% if @subject_type == 'Team' %>
+  <p><%= @subject_type %>: <%= @subject_name %> activities</p>
+
+  <% if @filters.present? %>
+    <p>Filters:</p>
+    <% @filters.each do |key, value| %>
+      <% if value.present? %>
+        <p><%= key %>: <%= value %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <p><%= @subject_type %>: <%= @subject_name %></p>
+<% end %>
+<%= image_tag attachments['information.pdf'].url %>

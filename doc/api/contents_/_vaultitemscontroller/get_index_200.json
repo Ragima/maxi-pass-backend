@@ -1,0 +1,48 @@
+{
+  "resource": "Contents / VaultItemsController",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/vault_items",
+  "description": "GET index 200",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/vault_items",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Access-Token": "GBYjVut0wWwCEooXuO-esQ",
+        "Client": "RTzUUABgjzoTY6_P-4EYlQ",
+        "Uid": "etfredricka_goyette@harris.us",
+        "Master-Key": "SYx4Rcon4eJ4aAg5P8X5GY+tnp00WZ3faD9Te+aY3NY=\n",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "{}": null
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"available_logins\": {\n    \"admin.socialtrading.uat.pp.ua\": {\n      \"page_login\": null,\n      \"passwords\": [\n        {\n          \"id\": 24,\n          \"username\": \"dforbf@gmail.com\"\n        }\n      ]\n    }\n  }\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"d3b0e7e0428d2cea954742ed380c93b3\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "7f8fc2ad-98f5-4dfa-8d4b-dd9738fb0c8f",
+        "X-Runtime": "0.190631",
+        "Content-Length": "128"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:3000/vault_items\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Access-Token: GBYjVut0wWwCEooXuO-esQ\" \\\n\t-H \"Client: RTzUUABgjzoTY6_P-4EYlQ\" \\\n\t-H \"Uid: etfredricka_goyette@harris.us\" \\\n\t-H \"Master-Key: SYx4Rcon4eJ4aAg5P8X5GY+tnp00WZ3faD9Te+aY3NY=\n\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

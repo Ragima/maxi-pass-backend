@@ -1,0 +1,71 @@
+{
+  "resources": [
+    {
+      "name": "Contents / VaultItemsController",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "GET index 200",
+          "link": "contents_/_vaultitemscontroller/get_index_200.json",
+          "groups": "all",
+          "route": "/vault_items",
+          "method": "get"
+        },
+        {
+          "description": "GET show 200",
+          "link": "contents_/_vaultitemscontroller/get_show_200.json",
+          "groups": "all",
+          "route": "/vault_items/:id",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "name": "Users / SessionsController",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "DELETE destroy 200. Sign out",
+          "link": "users_/_sessionscontroller/delete_destroy_200._sign_out.json",
+          "groups": "all",
+          "route": "/auth/sign_out",
+          "method": "delete"
+        },
+        {
+          "description": "POST create 200. Sign in",
+          "link": "users_/_sessionscontroller/post_create_200._sign_in.json",
+          "groups": "all",
+          "route": "auth/sign_in",
+          "method": "post"
+        },
+        {
+          "description": "POST create 401",
+          "link": "users_/_sessionscontroller/post_create_401.json",
+          "groups": "all",
+          "route": "auth/sign_in",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "name": "Users / TokenValidationsController",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "GET validate_token 200. Check session validity by headers",
+          "link": "users_/_tokenvalidationscontroller/get_validate_token_200._check_session_validity_by_headers.json",
+          "groups": "all",
+          "route": "/auth/validate_token",
+          "method": "get"
+        },
+        {
+          "description": "GET validate_token 401",
+          "link": "users_/_tokenvalidationscontroller/get_validate_token_401.json",
+          "groups": "all",
+          "route": "/auth/validate_token",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}

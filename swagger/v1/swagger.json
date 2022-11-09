@@ -1,0 +1,3761 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/activities/generate_report": {
+      "post": {
+        "summary": "Generate report",
+        "tags": [
+          "Activities"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "action_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "actor",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "activity_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report generated",
+            "examples": {
+              "application/json": null
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      }
+    },
+    "/api/v1/activities": {
+      "get": {
+        "summary": "Show team activities",
+        "tags": [
+          "Activities"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "action_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "actor",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "activity_type",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "activities founded",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 3,
+                    "trackable_type": "User",
+                    "trackable_id": 5,
+                    "owner_type": "User",
+                    "parameters": {
+                    },
+                    "created_at": "2019-06-25T08:20:37.516Z",
+                    "updated_at": "2019-06-25T08:20:37.516Z",
+                    "team_name": "team",
+                    "actor_email": "tanna@collier.com",
+                    "action_type": "User",
+                    "action_act": "Login"
+                  },
+                  {
+                    "id": 2,
+                    "trackable_type": "User",
+                    "trackable_id": 5,
+                    "owner_type": "User",
+                    "parameters": {
+                    },
+                    "created_at": "2019-06-25T08:20:37.513Z",
+                    "updated_at": "2019-06-25T08:20:37.513Z",
+                    "team_name": "team",
+                    "actor_email": "tanna@collier.com",
+                    "action_type": "User",
+                    "action_act": "Login"
+                  },
+                  {
+                    "id": 1,
+                    "trackable_type": "User",
+                    "trackable_id": 5,
+                    "owner_type": "User",
+                    "parameters": {
+                    },
+                    "created_at": "2019-06-25T08:20:37.510Z",
+                    "updated_at": "2019-06-25T08:20:37.510Z",
+                    "team_name": "team",
+                    "actor_email": "tanna@collier.com",
+                    "action_type": "User",
+                    "action_act": "Login"
+                  }
+                ],
+                "total_pages": 1,
+                "current_page": 1
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      }
+    },
+    "/api/v1/group_users/{group_id}/{user_id}": {
+      "post": {
+        "summary": "Create group users relation",
+        "tags": [
+          "GroupUsers"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User added to group",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 1,
+                    "user_id": 8,
+                    "group_id": "59218e7b-f608-4add-a520-9dc7bc584e87",
+                    "role": "user"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Group or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy group users relation",
+        "tags": [
+          "GroupUsers"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User deleted from group"
+          },
+          "404": {
+            "description": "Group or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      }
+    },
+    "/api/v1/group_users/{group_id}/{user_id}/change_role": {
+      "put": {
+        "summary": "Update role user in group",
+        "tags": [
+          "GroupUsers"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "role",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated to role lead",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 3,
+                  "group_id": "27940b77-a7f9-4bba-988c-3e58d28e2633",
+                  "user_id": 18,
+                  "role": "lead"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Group or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          },
+          "422": {
+            "description": "Invalid role",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "Role is not included in the list"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/group_vaults/{group_id}/{vault_id}": {
+      "post": {
+        "summary": "Create group vaults relation",
+        "tags": [
+          "GroupVaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vault added to group",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 1,
+                    "group_id": "e7a537b4-06bf-4c43-ad0e-4bc16f5f4966",
+                    "vault_id": "0da3fbc6-1868-47c9-80df-3e2aafc3b12e"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Group or vault not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy group vaults relation",
+        "tags": [
+          "GroupVaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Vault deleted from group"
+          },
+          "404": {
+            "description": "Group or vault not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      }
+    },
+    "/api/v1/groups": {
+      "get": {
+        "summary": "Shows groups",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "groups find",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": "69df1b13-3b77-4b59-9897-3f00c19e8d5e",
+                    "name": "voluptas",
+                    "created_at": "2019-06-25T08:20:42.708Z",
+                    "updated_at": "2019-06-25T08:20:42.708Z",
+                    "users": 0,
+                    "vaults": 0
+                  },
+                  {
+                    "id": "bf922133-4b77-458e-b15a-1726f229a3bb",
+                    "name": "voluptates",
+                    "created_at": "2019-06-25T08:20:42.703Z",
+                    "updated_at": "2019-06-25T08:20:42.703Z",
+                    "users": 0,
+                    "vaults": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a group",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "parent_group_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "group created",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "e4233955-2796-4384-a51a-0e68df126ce3",
+                  "name": "name",
+                  "created_at": "2019-06-25T08:20:43.335Z",
+                  "updated_at": "2019-06-25T08:20:43.335Z",
+                  "users": 0,
+                  "vaults": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{id}": {
+      "get": {
+        "summary": "Show a group",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group founded",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "f046e44c-90e7-4607-a28b-f9af2a163b1f",
+                  "name": "test",
+                  "created_at": "2019-06-25T08:20:43.463Z",
+                  "updated_at": "2019-06-25T08:20:43.463Z",
+                  "users": 0,
+                  "vaults": 0
+                },
+                "group_vaults": {
+                  "data": [
+
+                  ]
+                },
+                "group_users": {
+                  "data": [
+
+                  ]
+                },
+                "vaults": {
+                  "data": [
+
+                  ]
+                },
+                "groups": {
+                  "data": [
+                    {
+                      "id": "f046e44c-90e7-4607-a28b-f9af2a163b1f",
+                      "name": "test",
+                      "created_at": "2019-06-25T08:20:43.463Z",
+                      "updated_at": "2019-06-25T08:20:43.463Z"
+                    }
+                  ]
+                },
+                "user_vaults": {
+                  "data": [
+
+                  ]
+                },
+                "users": {
+                  "data": [
+
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          },
+          "404": {
+            "description": "Group not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a group",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "group deleted"
+          },
+          "404": {
+            "description": "group not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a group",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "group",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "parent_group_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "group updated",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "1dc682d4-8557-4884-b68c-5781486a8dc1",
+                  "name": "ergregwrewg",
+                  "created_at": "2019-06-25T08:20:44.869Z",
+                  "updated_at": "2019-06-25T08:20:45.148Z",
+                  "users": 0,
+                  "vaults": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "group not found"
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{group_id}/update_parent/{parent_group_id}": {
+      "put": {
+        "summary": "Update parent",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "parent_group_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "group parent updated",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "2363c56e-4e6e-4289-9044-8574809dc08f",
+                  "name": "eveniet",
+                  "parent_group_id": "dad1189b-c765-49da-b17b-71e88fdf177d",
+                  "created_at": "2019-06-25T08:20:45.533Z",
+                  "updated_at": "2019-06-25T08:20:45.826Z",
+                  "users": 0,
+                  "vaults": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "group not found"
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{group_id}/delete_parent/{parent_group_id}": {
+      "delete": {
+        "summary": "Delete parent",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "parent_group_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "group parent deleted",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "2363c56e-4e6e-4289-9044-8574809dc08f",
+                  "name": "eveniet",
+                  "parent_group_id": "dad1189b-c765-49da-b17b-71e88fdf177d",
+                  "created_at": "2019-06-25T08:20:45.533Z",
+                  "updated_at": "2019-06-25T08:20:45.826Z",
+                  "users": 0,
+                  "vaults": 0
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "group not found"
+          }
+        }
+      }
+    },
+    "/api/v1/groups/{id}/generate_report": {
+      "post": {
+        "summary": "Generate report",
+        "tags": [
+          "Groups"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report generated",
+            "examples": {
+              "application/json": {
+                "status": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/invitation/{id}": {
+      "delete": {
+        "summary": "Delete invite",
+        "tags": [
+          "Invitation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "user destroyed"
+          }
+        }
+      }
+    },
+    "/auth/invitation/resend_invitation/{id}": {
+      "get": {
+        "summary": "Resend invitation",
+        "tags": [
+          "Invitation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "invite sent",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 47,
+                  "email": "kemberly_simonis@hoppe.us",
+                  "first_name": "Jerri",
+                  "last_name": "Padberg",
+                  "name": "Mario Kutch",
+                  "team_name": "omnis",
+                  "accept_to": "2019-06-30T08:20:47.028Z",
+                  "blocked": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/invitation/": {
+      "post": {
+        "summary": "Create invitation",
+        "tags": [
+          "Invitation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "team_name": {
+                      "type": "string"
+                    },
+                    "extension_access": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "email"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "invite sent",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 49,
+                  "email": "sammy.russel@stiedemann.co.uk",
+                  "team_name": "sed",
+                  "invited_by_name": "Rodrigo Daugherty",
+                  "accept_to": "2019-06-30T08:20:47.270Z",
+                  "blocked": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update invitation",
+        "tags": [
+          "Invitation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "invitation": {
+                  "type": "object",
+                  "properties": {
+                    "password": {
+                      "type": "string"
+                    },
+                    "first_name": {
+                      "type": "string"
+                    },
+                    "last_name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "password",
+                    "first_name",
+                    "last_name"
+                  ]
+                },
+                "invitation_token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "invite sent",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 51,
+                  "email": "test@email.com",
+                  "name": " ",
+                  "team_name": "enim",
+                  "role_id": "admin",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/pages/home": {
+      "get": {
+        "summary": "Get vaults, groups, invitations",
+        "tags": [
+          "Pages"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Groups, vaults, invitations",
+            "examples": {
+              "application/json": {
+                "vaults": {
+                  "data": [
+                    {
+                      "id": "d5ec91c9-f6d5-4417-8671-d22d1e5a6714",
+                      "title": "dolor",
+                      "description": "voluptatum",
+                      "is_shared": false,
+                      "created_at": "2019-06-25T08:20:47.758Z",
+                      "updated_at": "2019-06-25T08:20:47.758Z"
+                    },
+                    {
+                      "id": "23353c86-f6a6-47dd-8b58-c516b0295942",
+                      "title": "odit",
+                      "description": "aut",
+                      "is_shared": false,
+                      "created_at": "2019-06-25T08:20:47.760Z",
+                      "updated_at": "2019-06-25T08:20:47.760Z"
+                    },
+                    {
+                      "id": "b7605640-e123-4d11-8c9b-ef4cb3e87951",
+                      "title": "quaerat",
+                      "description": "cum",
+                      "is_shared": false,
+                      "created_at": "2019-06-25T08:20:47.762Z",
+                      "updated_at": "2019-06-25T08:20:47.762Z"
+                    }
+                  ]
+                },
+                "groups": {
+                  "data": [
+                    {
+                      "id": "0daf3c63-b71d-4732-81b8-1dc634a817f3",
+                      "name": "quasi",
+                      "created_at": "2019-06-25T08:20:47.730Z",
+                      "updated_at": "2019-06-25T08:20:47.730Z"
+                    },
+                    {
+                      "id": "1c911689-bc99-427f-bd3a-8ac4a9eb56f6",
+                      "name": "praesentium",
+                      "created_at": "2019-06-25T08:20:47.735Z",
+                      "updated_at": "2019-06-25T08:20:47.735Z"
+                    },
+                    {
+                      "id": "915c6bda-866f-4e86-80cc-6fb4a8319a19",
+                      "name": "itaque",
+                      "created_at": "2019-06-25T08:20:47.739Z",
+                      "updated_at": "2019-06-25T08:20:47.739Z"
+                    }
+                  ]
+                },
+                "invitations": {
+                  "data": [
+                    {
+                      "id": 52,
+                      "email": "krystina.medhurst@lowe.ca",
+                      "first_name": "Kizzy",
+                      "last_name": "Bauch",
+                      "name": "Cesar Breitenberg",
+                      "team_name": "team",
+                      "accept_to": "2019-06-30T08:20:47.745Z",
+                      "blocked": false
+                    },
+                    {
+                      "id": 53,
+                      "email": "helga.prosacco@runtenitzsche.info",
+                      "first_name": "Celine",
+                      "last_name": "Auer",
+                      "name": "Bianca Oberbrunner",
+                      "team_name": "team",
+                      "accept_to": "2019-06-30T08:20:47.750Z",
+                      "blocked": false
+                    },
+                    {
+                      "id": 54,
+                      "email": "dominque@price.com",
+                      "first_name": "Michiko",
+                      "last_name": "Larkin",
+                      "name": "Mark Howell",
+                      "team_name": "team",
+                      "accept_to": "2019-06-30T08:20:47.755Z",
+                      "blocked": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/password": {
+      "post": {
+        "summary": "Reset password with email confirmation",
+        "tags": [
+          "Passwords"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "team_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "team_name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Email was sent"
+          },
+          "404": {
+            "description": "User was not found",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "Unable to find user with this email."
+                ]
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user password",
+        "tags": [
+          "Passwords"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "type": "string"
+                },
+                "password_confirmation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "password",
+                "password_confirmation"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password was changed",
+            "examples": {
+              "application/json": {
+                "messages": [
+                  "Your password was successfully updated. The recovery will be completed manually by the team administrator. Wait for email with confirmation."
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "User was not found",
+            "examples": {
+              "application/json": {
+                "errors": [
+                  "You cannot perform this action."
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "summary": "Creates a new user",
+        "tags": [
+          "Registration"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "temp": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          },
+          {
+            "name": "support_personal_vaults",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "support_personal_vaults": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "user registered",
+            "examples": {
+              "application/json": {
+                "id": 58,
+                "email": "naida.bechtelar@ritchie.us",
+                "first_name": "German",
+                "last_name": "Osinski",
+                "role_id": "admin",
+                "temp": "team_1",
+                "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwEEqVDx5QGNc3hUKpAdJ\nbyGi4bSr1d6c/X6HUlRd2uJAf1ZwLiH39s9HYQ7M9E3viHfRh9iWegeO19MO9To5\nl5hk/VY/M89AN3yP4S8BHcFfBDP5lf1CZC/KSlbbv2uAedje8r+M8ydYHuIIoyvR\nzBzwLhHbdGobuwl+m1WVOeL6hPBWoPkpmbqd+XyflnEqnEP0bGgg5eHPDr+8mYeR\ncRJx81hHMxI/MyL4gcq42sJzb5mM4amzqwMyeFhM6Diz2noG3a9vGn9Ou/kCs0qc\noWmaZF8UcvF7YcbsGrnFhMmE21kaec6fUWfk8xeG+axolpdBawpxKh0Ct1zqRs84\n0QIDAQAB\n-----END PUBLIC KEY-----\n",
+                "private_key": "njB5OWcw7H9wGccWoF3UAsGIqomkqS2kpFAAIWcBT0hXuVVj6DkEQE5VJLrS\nLyiodJaXtfinNhII4rMCv5snHaJkOrKNMdNuou9vAhBV5c5gODGGN/upFyfh\ntR5+1yvz5nr5sTtMt1064T8CFqvTU7XYm/Rp7dTId7qu32H1wvZoORUVKpG9\naBFcilNBHb/HobDx11BuIQkO/DA/5hqsxt10cUHHNGF9si3ao65Cnx142DIf\nKnkSJqIciUqbvIzkoPf9XunQetg7AReZvl4Gr54xk+ZJ4QFLPYJXggEfAnBH\nuBJXjBsMZ0ZLR+AHwZYEecFD7cLVit6r6PDkFm8vg2+M7TWswyLmAGiBhXJv\n89blPDANqH4Qhmrce60FtCyqLX6p2ubHydc6/2uflnU7ECC+EA0mFCZWmxQI\nZ6uJEIwl2n8UchILzBbcJFD7VjP1R6r2J9oUsVsN/XgFzYotwZ3GpY43HQBw\nvuOS2mBJqHnw56Idt5Yd6c6lPmTxcH2MEd3vzEW47VyUd0N2VdtrpsGGcm+i\nUKSepCFyuOzxWO6V+rgDQHfanUF0ybA1JI8Dha2cvPd8Ds+u8gpsuTVAqmQH\nqmoSBRBVPI3ovIrj1o+F5I0n5LQTVbq5vRy85AXapaYp4trjeZA+Aq/ao8oN\n683IfKpS9nAv+hp5ZrFsgkA9EpMI1XFBKTljPl5G39l3meWPZtB0ldcos+tW\nOi/QKoO9gVInbBYzgich/GwhdFanSl+VKl2yG3Xx4IByTDC/GQkxhhvJB0VA\nyFdWr5mk02jgSpaj4YiiG4cribSbp0HQ8Oy/JkKPgWjfhCQzt0gEMVHVdd4L\nRNHwvBvzbCNLH4TL5WtYC6OLUVofCF8QCevbLPchgZf8neyqq3RMUui6GATr\np/naACy3C/C2MgNg6g7crwIYHa5vh0edmU+VKBHVCaAvir57+G621U5JDvid\nFj9YvPYUGD3S0/qCUIKSt9r4lOcYFW3S40nXCRi2wgb5XtNtim+x3z4Z+Vgi\nXp1ZeFZRVukkoUKqB5bTEB+V4GGcRi2jXcoRf244rnjUjKWqkyYi7Nx1FIJ2\nI0xQK2p5b4JcXp/oEJOvS8vE7hybtONgeI8mJm781UR6EYfuX8W1BvnwyRBv\nVJM7B53TW1I3PyTGVX2vFC01dvFVaI58YqS80W2/5g5Nip3A6VG4k7vkkywz\nBFliblGfLulG1Usq/oF3ocsqU/kLitHW6Bb+VH+NpT1Z8fXIg+oYxyp9z3RT\n2WiYwnh8cdgv39U5TfTzAABM/dosdjuTDd1cOgThmxPjBp19FuBMS21POJ5L\nobz6AU3040xA5rHYFkUpJc3n6ns1pIjiDFn3WYsew/oHKcoucDRnPB7u+PxG\nEXnIIHdMJcpUGnbEASGUD6pbCJyUXba6qqPhmb6M3QBq0uIy2QXMsO1vy+Kn\nxoBgnOUKQQasId7hwQBfK0q+iEnnyt9H44D4nSTR5rdgYRYs8XVXjtSA+1VT\nhQKU3froXCTtXcNHfoST2heN6IkJqE6DarRC75e2mF4dOJvC5mYVMtQt9vzn\nbZHkpiYpf6nZ5OWl88xQLuss8QIO21xoCkhZ0o2bwpE6NQuff38wFu/mBiqO\nj9tBD9UvpWdhnxbXpPPY+RIxsTBbfiVqzyDfF/TpFXM8etJHNxwgcPBMAn8z\n/Dl/btv7ng/HDoYx0dwLBDJanvKfuzsiIk5V7KUqZ/kgJV3Hy0rsUjdX42VK\nC90K8rvj/RM5i7kGAKrGscEfE2KDNk7MeEA1JqzMjYBF58pbkJjL4d0YhQZy\nce9uyM53cG7mTM/lCXdmzciG+xGM9fYqViltu2BMTEmYg7IyKFzNeX4u4gFY\nzJz9ZX60ySsZbdu5l4yJzFKs0RXS/w+oF1/gmQKJVY76l6yUTYHN/1n8VgsN\nV90iKIv1YpSQzc6fXflCRKEyETmcwU2gIPvZNXd58sgOg36/RMPrlBbn12v6\nY1W4dBtM8q2zQTTJGC3epnURwx0qzubEFKt1X/dkTQQCcfL/736fj/s6wC7p\nbfPDMzHvQMsyU03hJZSKm/lZ7J+VgYuEfuv6krA0lHy+Qr3MvwJr21vY3mRi\np/BKrAyJiszexw/4/WrYpJ1GjGKMfJmnGbAbW7QtQ9JPlmbbRWt9hdREmJ4n\nQi3hzeXNUfRN24cjJSBX1E7qvZMtl9vJH9+aG7A9g5A717rUVq3kxwMC43xs\nwmQvZyKMgU5Ux+G8f+xN\n",
+                "created_at": "2019-06-25T08:20:48.543Z",
+                "updated_at": "2019-06-25T08:20:48.652Z",
+                "team_name": null,
+                "phone_number": null,
+                "sms_code": null,
+                "authentication_type": "none",
+                "name": "German Osinski",
+                "reset_pass": false,
+                "change_pass": false,
+                "recovery_token": null,
+                "patched": false,
+                "support_personal_vaults": false,
+                "uid": "_naida.bechtelar@ritchie.us",
+                "provider": "email",
+                "extension_access": null,
+                "blocked": false,
+                "password_changed_at": "2019-06-25T08:20:48.543Z",
+                "qr_code_url": "otpauth://totp/Maxipass_v2:hello@aa.aa?secret=rnzpxicthiqmgseg4ez2ywhb&issuer=Maxipass_v2"
+              }
+            }
+          },
+          "422": {
+            "description": "invalid request",
+            "examples": {
+              "application/json": {
+                "status": "error",
+                "errors": [
+                  "Password can't be blank",
+                  "Email is invalid"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign_in": {
+      "post": {
+        "summary": "Creates a new session",
+        "tags": [
+          "Session"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "team_name": {
+                  "type": "string"
+                },
+                "otp_attempt": {
+                  "type": "string"
+                },
+                "extension_access": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "email",
+                "password",
+                "team_name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session created",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 59,
+                  "email": "britt@jones.ca",
+                  "first_name": "Nicolasa",
+                  "last_name": "Kessler",
+                  "name": "Felecia Kuvalis",
+                  "team_name": "porro",
+                  "role_id": "user",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "examples": {
+              "application/json": {
+                "success": false,
+                "errors": [
+                  "Invalid login credentials. Please try again."
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/sign_out": {
+      "delete": {
+        "summary": "deleting session",
+        "tags": [
+          "Session"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session deleted",
+            "examples": {
+              "application/json": {
+                "success": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/subscriptions": {
+      "get": {
+        "summary": "Shows subscriptions",
+        "tags": [
+          "Subscription"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "subscriptions list",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 1,
+                    "entity_type": "in",
+                    "action_type": "voluptatem",
+                    "active_status": false
+                  },
+                  {
+                    "id": 2,
+                    "entity_type": "sunt",
+                    "action_type": "asperiores",
+                    "active_status": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/subscriptions/{id}": {
+      "delete": {
+        "summary": "Delete a subscriptions",
+        "tags": [
+          "Subscription"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "subscription deleted"
+          },
+          "404": {
+            "description": "subscription not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a subscriptions",
+        "tags": [
+          "Subscription"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "subscription created",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 5,
+                  "entity_type": "ipsum",
+                  "action_type": "perspiciatis"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "subscription not found"
+          }
+        }
+      }
+    },
+    "/api/v1/user_vaults/{user_id}/{vault_id}": {
+      "post": {
+        "summary": "Create user vaults relation",
+        "tags": [
+          "UserVaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User added to vault",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 2,
+                    "user_id": 66,
+                    "vault_id": "6a6b8ef5-e688-4f21-b4e6-3e218b155c85",
+                    "vault_writer": false
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Vault or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy user vaults relation",
+        "tags": [
+          "UserVaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Destroy user vault relation"
+          },
+          "404": {
+            "description": "Vault or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      }
+    },
+    "/api/v1/user_vaults/{user_id}/{vault_id}/change_role": {
+      "put": {
+        "summary": "Change user role related to vault",
+        "tags": [
+          "UserVaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "vault_writer",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "vault_writer": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated to vault_writer: true",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 4,
+                  "user_id": 76,
+                  "vault_id": "9d4d5466-2500-4dc9-a85e-dfbdde21d25c",
+                  "role": "user"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Vault or user not found"
+          },
+          "403": {
+            "description": "User not permitted to do this operation"
+          }
+        }
+      }
+    },
+    "/api/v1/invitations": {
+      "get": {
+        "summary": "Show invitations",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "show invitations",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 81,
+                    "email": "cherlyn@hettingerhaag.name",
+                    "first_name": "Mario",
+                    "last_name": "Erdman",
+                    "name": "Gwenda Hirthe",
+                    "team_name": "quia",
+                    "accept_to": "2019-06-30T08:20:53.414Z",
+                    "blocked": false
+                  },
+                  {
+                    "id": 82,
+                    "email": "porsha_gusikowski@kessler.biz",
+                    "first_name": "Jenette",
+                    "last_name": "Wolff",
+                    "name": "Felton Hills",
+                    "team_name": "quia",
+                    "accept_to": "2019-06-30T08:20:53.419Z",
+                    "blocked": false
+                  },
+                  {
+                    "id": 83,
+                    "email": "particia_donnelly@wehnerbarton.com",
+                    "first_name": "Laraine",
+                    "last_name": "Rau",
+                    "name": "Glady Thiel",
+                    "team_name": "quia",
+                    "accept_to": "2019-06-30T08:20:53.423Z",
+                    "blocked": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "summary": "Shows users",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "show users",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 85,
+                    "email": "jung.brekke@dubuque.name",
+                    "first_name": "Ashley",
+                    "last_name": "Roob",
+                    "name": "Leonie Ratke",
+                    "team_name": "cum",
+                    "role_id": "user",
+                    "reset_pass": false,
+                    "blocked": false,
+                    "lead": true
+                  },
+                  {
+                    "id": 86,
+                    "email": "elease_windler@cronalowe.biz",
+                    "first_name": "Lola",
+                    "last_name": "Carroll",
+                    "name": "Dominique Champlin",
+                    "team_name": "cum",
+                    "role_id": "user",
+                    "reset_pass": false,
+                    "blocked": false,
+                    "lead": true
+                  }
+                ],
+                "group_users": {
+                  "data": [
+                    {
+                      "id": 5,
+                      "user_id": 85,
+                      "group_id": "31fe7d67-3fbc-4d25-8d9e-d2aa176fc8f0",
+                      "role": "lead"
+                    },
+                    {
+                      "id": 6,
+                      "user_id": 85,
+                      "group_id": "4190aff0-4caf-4f75-98ee-3d31a77f8379",
+                      "role": "user"
+                    },
+                    {
+                      "id": 7,
+                      "user_id": 86,
+                      "group_id": "31fe7d67-3fbc-4d25-8d9e-d2aa176fc8f0",
+                      "role": "lead"
+                    },
+                    {
+                      "id": 8,
+                      "user_id": 86,
+                      "group_id": "4190aff0-4caf-4f75-98ee-3d31a77f8379",
+                      "role": "user"
+                    }
+                  ]
+                },
+                "groups": {
+                  "data": [
+                    {
+                      "id": "31fe7d67-3fbc-4d25-8d9e-d2aa176fc8f0",
+                      "name": "ipsa",
+                      "created_at": "2019-06-25T08:20:53.651Z",
+                      "updated_at": "2019-06-25T08:20:53.651Z"
+                    },
+                    {
+                      "id": "4190aff0-4caf-4f75-98ee-3d31a77f8379",
+                      "name": "totam",
+                      "created_at": "2019-06-25T08:20:53.656Z",
+                      "updated_at": "2019-06-25T08:20:53.656Z"
+                    }
+                  ]
+                },
+                "invitations": {
+                  "data": [
+
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "summary": "Shows user",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "show user",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 88,
+                  "email": "torri@howell.ca",
+                  "first_name": "Ranee",
+                  "last_name": "Hyatt",
+                  "name": "Brendon Murazik",
+                  "team_name": "ut",
+                  "role_id": "user",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                },
+                "group_users": {
+                  "data": [
+                    {
+                      "id": 9,
+                      "user_id": 88,
+                      "group_id": "4c8941ba-4343-4075-8375-7c9a128e654d",
+                      "role": "user"
+                    }
+                  ]
+                },
+                "user_vaults": {
+                  "data": [
+                    {
+                      "id": 5,
+                      "user_id": 88,
+                      "vault_id": "fa35af9b-5252-4f9a-a30e-36fd8c7b79b0",
+                      "vault_writer": false
+                    }
+                  ]
+                },
+                "group_vaults": {
+                  "data": [
+                    {
+                      "id": 3,
+                      "group_id": "4c8941ba-4343-4075-8375-7c9a128e654d",
+                      "vault_id": "9422e2f7-a078-4abd-8162-db456286d9f0"
+                    }
+                  ]
+                },
+                "groups": {
+                  "data": [
+                    {
+                      "id": "4c8941ba-4343-4075-8375-7c9a128e654d",
+                      "name": "placeat",
+                      "created_at": "2019-06-25T08:20:53.876Z",
+                      "updated_at": "2019-06-25T08:20:53.876Z"
+                    },
+                    {
+                      "id": "16cea005-ce88-4b3f-8451-dc87310d96d8",
+                      "name": "qui",
+                      "created_at": "2019-06-25T08:20:53.880Z",
+                      "updated_at": "2019-06-25T08:20:53.880Z"
+                    }
+                  ]
+                },
+                "vaults": {
+                  "data": [
+                    {
+                      "id": "9422e2f7-a078-4abd-8162-db456286d9f0",
+                      "title": "et",
+                      "description": "porro",
+                      "is_shared": false,
+                      "created_at": "2019-06-25T08:20:53.886Z",
+                      "updated_at": "2019-06-25T08:20:53.886Z"
+                    },
+                    {
+                      "id": "fa35af9b-5252-4f9a-a30e-36fd8c7b79b0",
+                      "title": "vel",
+                      "description": "aspernatur",
+                      "is_shared": false,
+                      "created_at": "2019-06-25T08:20:53.885Z",
+                      "updated_at": "2019-06-25T08:20:53.885Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update user",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 90,
+                  "email": "elfreda.fritsch@kassulke.com",
+                  "first_name": "Jetta",
+                  "last_name": "Gerlach",
+                  "name": "Andra McLaughlin",
+                  "team_name": "deleniti",
+                  "role_id": "user",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy user",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "user destroyed"
+          }
+        }
+      }
+    },
+    "/api/v1/update_settings": {
+      "put": {
+        "summary": "Update settings",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "password_confirmation": {
+                  "type": "string"
+                },
+                "current_password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User settings updated",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 92,
+                  "email": "darrin@dooley.biz",
+                  "first_name": "bla",
+                  "last_name": "bla",
+                  "name": "Asia Rolfson",
+                  "team_name": "non",
+                  "role_id": "admin",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users_reset_password": {
+      "get": {
+        "summary": "Users with reset password",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Show users with reset password",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 95,
+                    "email": "darin@dickiconroy.co.uk",
+                    "first_name": "Elma",
+                    "last_name": "McKenzie",
+                    "name": "Milissa O'Conner",
+                    "team_name": "doloremque",
+                    "role_id": "user",
+                    "reset_pass": true,
+                    "blocked": false,
+                    "lead": false
+                  },
+                  {
+                    "id": 96,
+                    "email": "kamala@aufderhar.info",
+                    "first_name": "Julius",
+                    "last_name": "Powlowski",
+                    "name": "Clement Lockman",
+                    "team_name": "doloremque",
+                    "role_id": "user",
+                    "reset_pass": true,
+                    "blocked": false,
+                    "lead": false
+                  },
+                  {
+                    "id": 97,
+                    "email": "chau@jacobi.name",
+                    "first_name": "Lacey",
+                    "last_name": "Bins",
+                    "name": "Dixie Hansen",
+                    "team_name": "doloremque",
+                    "role_id": "user",
+                    "reset_pass": true,
+                    "blocked": false,
+                    "lead": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/{user_id}/change_role": {
+      "put": {
+        "summary": "Update role user to admin",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated to role_id admin",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 99,
+                  "email": "jacquline_schmitt@morissette.info",
+                  "first_name": "Kelly",
+                  "last_name": "Jones",
+                  "name": "Stormy Blanda",
+                  "team_name": "quisquam",
+                  "role_id": "admin",
+                  "reset_pass": false,
+                  "blocked": false,
+                  "lead": false,
+                  "password_expired": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{user_id}/restore": {
+      "put": {
+        "summary": "Restore user access after reset password",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully restores"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{user_id}/toggle_block": {
+      "put": {
+        "summary": "Block or unblock user",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User successfully blocked or unblocked"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{id}/generate_report": {
+      "post": {
+        "summary": "Generate report",
+        "tags": [
+          "Users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "report_receiver_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report generated",
+            "examples": {
+              "application/json": {
+                "status": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/login_items/{id}": {
+      "get": {
+        "summary": "Show login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login_item show",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 1,
+                  "title": "magni",
+                  "vault_id": "26e0c1cb-da23-4265-b71a-2c794a8f4887",
+                  "tags": "voluptatibus maxime",
+                  "updatable": true,
+                  "entity_type": "LoginItem",
+                  "created_at": "2019-06-25T08:20:57.562Z",
+                  "updated_at": "2019-06-25T08:20:57.577Z",
+                  "content": {
+                    "some_field": "some_value"
+                  }
+                },
+                "vaults": {
+                  "data": [
+                    {
+                      "id": "26e0c1cb-da23-4265-b71a-2c794a8f4887",
+                      "title": "ea",
+                      "description": "fugit",
+                      "is_shared": true,
+                      "created_at": "2019-06-25T08:20:57.442Z",
+                      "updated_at": "2019-06-25T08:20:57.548Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "login_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login_item update",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 3,
+                  "title": "Test",
+                  "vault_id": "83f3bb08-11f1-4cab-baf9-89f8ab464416",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "LoginItem",
+                  "created_at": "2019-06-25T08:20:58.612Z",
+                  "updated_at": "2019-06-25T08:20:58.838Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "login_item update"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/login_items": {
+      "post": {
+        "summary": "Create login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "login_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "login_item create",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 2,
+                  "title": "Test",
+                  "vault_id": "13b41f2e-7f81-47a5-94df-f8e0f254d814",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "LoginItem",
+                  "created_at": "2019-06-25T08:20:58.409Z",
+                  "updated_at": "2019-06-25T08:20:58.409Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/login_items/{login_item_id}/copy": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "login_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Copy login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "login_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/login_items/{login_item_id}/move": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "login_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Move login_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "login_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/credit_card_items/{id}": {
+      "get": {
+        "summary": "Show credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "credit_card_item show",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 8,
+                  "title": "beatae",
+                  "vault_id": "35a2825c-ca41-442d-94b0-dae1a26e7413",
+                  "tags": "sint quae",
+                  "updatable": true,
+                  "entity_type": "CreditCardItem",
+                  "created_at": "2019-06-25T08:21:00.570Z",
+                  "updated_at": "2019-06-25T08:21:00.585Z",
+                  "content": {
+                    "some_field": "some_value"
+                  }
+                },
+                "vaults": {
+                  "data": [
+                    {
+                      "id": "35a2825c-ca41-442d-94b0-dae1a26e7413",
+                      "title": "voluptatibus",
+                      "description": "error",
+                      "is_shared": true,
+                      "created_at": "2019-06-25T08:21:00.461Z",
+                      "updated_at": "2019-06-25T08:21:00.563Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "credit_card_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "credit_card_item update",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 10,
+                  "title": "Test",
+                  "vault_id": "30fd644c-ac26-4da4-b6f0-cea3ef3b4b43",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "CreditCardItem",
+                  "created_at": "2019-06-25T08:21:01.587Z",
+                  "updated_at": "2019-06-25T08:21:01.814Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "credit_card_item update"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/credit_card_items": {
+      "post": {
+        "summary": "Create credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "credit_card_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "credit_card_item create",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 9,
+                  "title": "Test",
+                  "vault_id": "4b0086bd-6d15-4f93-ac55-941fbe6ca4ba",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "CreditCardItem",
+                  "created_at": "2019-06-25T08:21:01.338Z",
+                  "updated_at": "2019-06-25T08:21:01.338Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/credit_card_items/{credit_card_item_id}/copy": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "credit_card_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Copy credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "credit_card_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/credit_card_items/{credit_card_item_id}/move": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "credit_card_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Move credit_card_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "credit_card_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items/{id}": {
+      "get": {
+        "summary": "Show server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "server_item show",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 15,
+                  "title": "ut",
+                  "vault_id": "113c78da-ad34-4af1-bb96-b84279836bdf",
+                  "tags": "quo et",
+                  "updatable": true,
+                  "entity_type": "ServerItem",
+                  "created_at": "2019-06-25T08:21:03.570Z",
+                  "updated_at": "2019-06-25T08:21:03.584Z",
+                  "content": {
+                    "some_field": "some_value"
+                  }
+                },
+                "vaults": {
+                  "data": [
+                    {
+                      "id": "113c78da-ad34-4af1-bb96-b84279836bdf",
+                      "title": "dolores",
+                      "description": "delectus",
+                      "is_shared": true,
+                      "created_at": "2019-06-25T08:21:03.461Z",
+                      "updated_at": "2019-06-25T08:21:03.563Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "server_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "server_item update",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 17,
+                  "title": "Test",
+                  "vault_id": "9381e9c8-23b3-4b85-8769-bc7f690d174a",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "ServerItem",
+                  "created_at": "2019-06-25T08:21:04.467Z",
+                  "updated_at": "2019-06-25T08:21:04.699Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroy server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "server_item update"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items": {
+      "post": {
+        "summary": "Create server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "server_item",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "string"
+                },
+                "only_for_admins": {
+                  "type": "boolean"
+                },
+                "dynamic_key": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "server_item create",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 16,
+                  "title": "Test",
+                  "vault_id": "7fa227c4-04b6-4140-b3ee-510b1b01ed72",
+                  "tags": "test1 test2",
+                  "updatable": true,
+                  "entity_type": "ServerItem",
+                  "created_at": "2019-06-25T08:21:04.253Z",
+                  "updated_at": "2019-06-25T08:21:04.253Z",
+                  "content": {
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items/{server_item_id}/copy": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "server_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Copy server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "server_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items/{server_item_id}/move": {
+      "parameters": [
+        {
+          "name": "vault_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "server_item_id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "target_vault_id",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "target_vault_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "post": {
+        "summary": "Move server_item",
+        "tags": [
+          "Vault Items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "server_item copy"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults": {
+      "get": {
+        "summary": "Shows vaults",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "vault find",
+            "examples": {
+              "application/json": {
+                "data": [
+
+                ],
+                "group_vaults": {
+                  "data": [
+
+                  ]
+                },
+                "groups": {
+                  "data": [
+
+                  ]
+                },
+                "users": {
+                  "data": [
+
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a vault",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "vault created",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "68626c91-5936-4aa3-b8f7-53163461846a",
+                  "title": "name",
+                  "description": "test",
+                  "is_shared": true,
+                  "created_at": "2019-06-25T08:21:07.557Z",
+                  "updated_at": "2019-06-25T08:21:07.557Z",
+                  "updatable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{id}": {
+      "get": {
+        "summary": "Shows vault",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vault find",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "a63663fb-6da0-4fc5-a7cc-1796190dc72f",
+                  "title": "est",
+                  "description": "quo",
+                  "is_shared": true,
+                  "created_at": "2019-06-25T08:21:06.663Z",
+                  "updated_at": "2019-06-25T08:21:06.765Z",
+                  "updatable": true
+                },
+                "group_vaults": {
+                  "data": [
+
+                  ]
+                },
+                "groups": {
+                  "data": [
+
+                  ]
+                },
+                "user_vaults": {
+                  "data": [
+
+                  ]
+                },
+                "users": {
+                  "data": [
+
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "vault not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates a vault",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "vault",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "title",
+                "description"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vault updated",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": "be789c1e-cb06-4efc-9ba1-341e1e911200",
+                  "title": "ut",
+                  "description": "suscipit",
+                  "is_shared": true,
+                  "created_at": "2019-06-25T08:21:07.820Z",
+                  "updated_at": "2019-06-25T08:21:07.923Z",
+                  "updatable": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Destroyed a vault",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "vault destroyed"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{id}/vault_items": {
+      "get": {
+        "summary": "Shows vault items",
+        "tags": [
+          "Vault items"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vault find",
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 22,
+                    "title": "sequi",
+                    "vault_id": "1d9f3d1b-dc5c-4c23-9cde-86fa978451f8",
+                    "tags": "modi omnis",
+                    "entity_type": "LoginItem",
+                    "created_at": "2019-06-25T08:21:08.754Z",
+                    "updated_at": "2019-06-25T08:21:08.761Z"
+                  },
+                  {
+                    "id": 23,
+                    "title": "totam",
+                    "vault_id": "1d9f3d1b-dc5c-4c23-9cde-86fa978451f8",
+                    "tags": "neque earum",
+                    "entity_type": "LoginItem",
+                    "created_at": "2019-06-25T08:21:08.759Z",
+                    "updated_at": "2019-06-25T08:21:08.762Z"
+                  }
+                ],
+                "vault": {
+                  "data": {
+                    "id": "1d9f3d1b-dc5c-4c23-9cde-86fa978451f8",
+                    "title": "soluta",
+                    "description": "expedita",
+                    "is_shared": true,
+                    "created_at": "2019-06-25T08:21:08.648Z",
+                    "updated_at": "2019-06-25T08:21:08.749Z",
+                    "updatable": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{id}/generate_report": {
+      "post": {
+        "summary": "Generate report",
+        "tags": [
+          "Vaults"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report generated",
+            "examples": {
+              "application/json": {
+                "status": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items/{vault_item_id}/documents": {
+      "post": {
+        "summary": "Create document for server item",
+        "tags": [
+          "Documents"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "vault_item_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name":"document[file]",
+            "in":"formData",
+            "type":"file",
+            "description":"The file to upload.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 16
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      }
+    },
+    "/api/v1/vaults/{vault_id}/server_items/{vault_item_id}/documents/{id}": {
+      "get": {
+        "summary": "Show document for server item",
+        "tags": [
+          "Documents"
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "Vault id"
+          },
+          {
+            "name": "vault_item_id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "VaultItem id"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": "document ID "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 16
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update document for server item",
+        "tags": [
+          "Documents"
+        ],
+
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "vault_item_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name":"document[file]",
+            "in":"formData",
+            "type":"file",
+            "description":"The file to upload."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "document updated",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 16
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete document for server item",
+        "tags": [
+          "Documents"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vault_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "vault_item_id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Document deleted"
+          },
+          "404": {
+            "description": "Document not found"
+          },
+          "403": {
+            "description": "User not permitted"
+          }
+        }
+      }
+    },
+    "/api/v1/enable_two_factor/{team_name}": {
+      "post": {
+        "summary": "Enable Two Factor Auth",
+        "tags": [
+          "Two Factor Auth"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "team_name",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Two Factor Auth enabled",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "name": "team name",
+                  "otp_required_for_login": true,
+                  "created_at": "2019-06-25T08:21:07.820Z",
+                  "updated_at": "2019-06-25T08:21:07.923Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/disable_two_factor/{team_name}": {
+      "post": {
+        "summary": "Disable two factor auth",
+        "tags": [
+          "Two Factor Auth"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "team_name",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Two Factor Auth Disabled",
+            "examples": {
+              "application/json": {
+                "data": {
+                  "name": "team name",
+                  "otp_required_for_login": false,
+                  "created_at": "2019-06-25T08:21:07.820Z",
+                  "updated_at": "2019-06-25T08:21:07.923Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset_otp": {
+      "post": {
+        "summary": "reset otp",
+        "tags": [
+          "Two Factor Auth"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "report generated",
+            "examples": {
+              "application/json": {
+                "status": 204
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "accessToken": {
+      "type": "apiKey",
+      "name": "access-token",
+      "in": "header"
+    },
+    "tokenType": {
+      "type": "apiKey",
+      "name": "token-type",
+      "in": "header"
+    },
+    "client": {
+      "type": "apiKey",
+      "name": "client",
+      "in": "header"
+    },
+    "expiry": {
+      "type": "apiKey",
+      "name": "expiry",
+      "in": "header"
+    },
+    "uid": {
+      "type": "apiKey",
+      "name": "uid",
+      "in": "header"
+    },
+    "masterKey": {
+      "type": "apiKey",
+      "name": "master-key",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "accessToken": [
+
+      ],
+      "tokenType": [
+
+      ],
+      "client": [
+
+      ],
+      "expiry": [
+
+      ],
+      "uid": [
+
+      ],
+      "masterKey": [
+
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  variables:
+    statement_timeout: <%= ENV['PG_STATEMENT_TIMEOUT'] || 1000000 %>
+development:
+  <<: *default
+  database: maxipass_production
+test:
+  <<: *default
+  database: MaxiPass_test

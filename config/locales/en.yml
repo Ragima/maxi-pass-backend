@@ -1,0 +1,63 @@
+en:
+  pundit:
+    unauthorized: 'You cannot perform this action.'
+    feature_disabled: 'Sorry, the page are you looking for not available'
+  user:
+    email:
+      incorrect: 'is incorrect, please try again.'
+    name:
+      validation: "You can use 1..%{name_length} letters, numbers, space and symbols '_','-'"
+    temp:
+      length_validation: 'Company_name length is incorrect, must 1..50 characters'
+    password:
+      validation: 'Must contain 16 or more characters, digit, lower case character, upper case character and symbol'
+    admin_cannot_be_deleted: 'Admin cannot be deleted!'
+    admin_cannot_be_changed: 'Admin role cannot be changed!'
+    exist: 'This user already in your team.'
+  registration:
+    invalid_team_name: 'Sorry, names "about", "contact", "help","support" and "recover" are forbidden or Team neme is already exist. Please choose another Team to create.'
+    team_name_already_exist: 'Team name is already exist. Please choose another Team to create'
+    email_already_exist: 'email already registered'
+  vault:
+    title:
+      validation: "You can use 1..%{title_length} letters, numbers, space and symbols '_','-'"
+    description:
+      validation: "You can use maximum length - %{description_length}, letters, numbers, space and symbol '_'"
+    private: 'Your vault is private.'
+  group:
+    name:
+      validation: "You can use 1..%{name_length} letters, numbers, space and symbols '_','-'"
+  parameters:
+    empty_parameters: "Parameters are empty or incorrect: "
+  mailer:
+    reset_password_instructions:
+      hello: "Hello %{email}"
+      request_reset_link_msg: "Someone has requested a link to change your password in the team %{team_name}. You can do this through the link below."
+      password_change_link: "Change my password"
+      ignore_mail_msg: "If you didn't request this, please ignore this email."
+      no_changes_msg: "Your password won't change until you access the link above and create a new one."
+      admin_restored: "Admin manually restored your access to MaxiPass in the team %{team_name}."
+      personal_vault_lost: "Unfortunately, all data in your personal vault was lost."
+    two_factor_auth:
+      title: "Hello your team: %{team_name} enabled two factor auth. You need scan QR code"
+      info: "You need download Google Authenticator app in Google Play or App Store"
+    activity:
+      title: "Activity in %{team_name} team."
+    reporting_mailer:
+      report: "User %{report_owner} send you structure report:"
+  passwords:
+    user_not_found: "Unable to find user with this email."
+    reset_password_success: "Your password was successfully updated. The recovery will be completed manually by the team administrator. Wait for email with confirmation."
+  sessions:
+    extension: 'Please use the extension to login.'
+    account_lock_msg: "Your account has been locked due to an excessive number of unsuccessful sign in attempts. Please check your email and follow unlock instructions."
+    account_block_msg: "Your account has been blocked."
+    otp_token_invalid: "Your authenticated code is invalid "
+  invitation:
+    extension: 'You successfully accepted invitation but please use the extension to login.'
+  time:
+    formats:
+        mailer:
+          reset_password_until_format:
+            accept_until_format: "%B %d, %Y %I:%M %p"
+

@@ -1,0 +1,37 @@
+<p><%= I18n.t('mailer.two_factor_auth.title', team_name: @team_name) %></p>
+
+<h2>Two Factor Authentication With  QR Code</h2>
+<p><%= image_tag(attachments['qr_code'].url) %></p>
+
+<div >
+  <div >
+    <ol >
+      <li>
+        Install Google Authenticator:
+        <%= link_to "Android", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en", target: :blank %>
+        or
+        <%= link_to "iOS", "https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8", target: :blank %>
+      </li>
+      <li>In the app, select "Set up account" or the Plus (+) sign.</li>
+      <li>Choose "Scan a barcode"</li>
+    </ol>
+  </div>
+</div>
+
+<h2>Two Factor Authentication With Auth Code</h2>
+<p>Auth code: <b> <%= @code  %> </b></p>
+<div >
+  <div >
+    <ol >
+      <li>
+        Install Google Authenticator:
+        <%= link_to "Android", "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en", target: :blank %>
+        or
+        <%= link_to "iOS", "https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8", target: :blank %>
+      </li>
+      <li>In the app, select "Set up account" or the Plus (+) sign.</li>
+      <li>Choose "Enter a provided key"</li>
+      <li>On tab "Enter account details" Choose "Time based"</li>
+    </ol>
+  </div>
+</div>

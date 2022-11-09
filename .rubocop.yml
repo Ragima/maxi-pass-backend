@@ -1,0 +1,23 @@
+require: rubocop-rspec
+Metrics/LineLength:
+  Max: 150
+  Exclude:
+  - 'db/schema.rb'
+Metrics/ClassLength:
+  Max: 600
+Metrics/BlockLength:
+  Max: 600
+Metrics/MethodLength:
+  Max: 600
+Metrics/AbcSize:
+  Max: 600
+Style/Documentation:
+  Include:
+  - app/models/**/*
+  - lib/**/*
+Documentation:
+  Enabled: false
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'

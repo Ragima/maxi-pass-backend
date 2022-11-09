@@ -1,0 +1,46 @@
+{
+  "resource": "Users / SessionsController",
+  "resource_explanation": null,
+  "http_method": "DELETE",
+  "route": "/auth/sign_out",
+  "description": "DELETE destroy 200. Sign out",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/auth/sign_out",
+      "request_body": "{}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Access-Token": "dqdccVB6iEkWjaB0YMzgow",
+        "Client": "BYgKIT5cdo3ImOnA7I2ILg",
+        "Uid": "ullamnickie_morissette@lind.com",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"success\": true\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"c955e57777ec0d73639dca6748560d00\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "1d3895cc-8caa-411c-86c3-c55c1c9d2d79",
+        "X-Runtime": "0.068263",
+        "Content-Length": "16"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/auth/sign_out\" -d '{}' -X DELETE \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Access-Token: dqdccVB6iEkWjaB0YMzgow\" \\\n\t-H \"Client: BYgKIT5cdo3ImOnA7I2ILg\" \\\n\t-H \"Uid: ullamnickie_morissette@lind.com\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

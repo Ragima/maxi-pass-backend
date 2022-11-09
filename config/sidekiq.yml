@@ -1,0 +1,5 @@
+:concurrency: 2
+:queues:
+  - [report, 2]
+  - [mailers, 2]
+  - [two_factor, 3]

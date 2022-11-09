@@ -1,0 +1,47 @@
+{
+  "resource": "Users / TokenValidationsController",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/auth/validate_token",
+  "description": "GET validate_token 200. Check session validity by headers",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/auth/validate_token",
+      "request_body": null,
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Access-Token": "lRXKjnIlliDThE0qrJo_vA",
+        "Client": "snt83eLf1x2xkOqebb1kVA",
+        "Uid": "doloresveronique@hyatt.ca",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+        "{}": null
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 108,\n  \"email\": \"veronique@hyatt.ca\",\n  \"name\": null,\n  \"first_name\": \"Gertie\",\n  \"last_name\": \"Oga\",\n  \"team_name\": \"dolores\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "ETag": "W/\"41d1fb79b3d6ecfd7703465526f32396\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "ce603ded-ee69-48cf-be77-577240f5631d",
+        "X-Runtime": "0.086536",
+        "Content-Length": "113"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"http://localhost:3000/auth/validate_token\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Access-Token: lRXKjnIlliDThE0qrJo_vA\" \\\n\t-H \"Client: snt83eLf1x2xkOqebb1kVA\" \\\n\t-H \"Uid: doloresveronique@hyatt.ca\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

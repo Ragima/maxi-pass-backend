@@ -1,0 +1,83 @@
+{
+  "resource": "Users / SessionsController",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "auth/sign_in",
+  "description": "POST create 200. Sign in",
+  "explanation": null,
+  "parameters": [
+    {
+      "name": "team_name",
+      "description": " team name"
+    },
+    {
+      "required": true,
+      "entity_type": "string",
+      "name": "email",
+      "description": " email"
+    },
+    {
+      "required": true,
+      "entity_type": "string",
+      "name": "password",
+      "description": " password"
+    }
+  ],
+  "response_fields": [
+    {
+      "entity_type": "string",
+      "name": "id",
+      "description": " id"
+    },
+    {
+      "entity_type": "string",
+      "name": "email",
+      "description": " email"
+    },
+    {
+      "entity_type": "string",
+      "name": "first_name",
+      "description": " first name"
+    },
+    {
+      "entity_type": "string",
+      "name": "last_name",
+      "description": " last name"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "auth/sign_in",
+      "request_body": "{\"team_name\":\"id\",\"email\":\"email@example.com\",\"password\":\"password\"}",
+      "request_headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Host": "example.org",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 106,\n  \"email\": \"email@example.com\",\n  \"name\": null,\n  \"first_name\": \"Deana\",\n  \"last_name\": \"Prosacco\",\n  \"team_name\": \"id\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "access-token": "ylWdvAGvqaAtM9-jW55zfg",
+        "token-type": "Bearer",
+        "client": "DIeeISxJ4JaTRqib_-xmsw",
+        "expiry": "1552300735",
+        "uid": "idemail@example.com",
+        "master-key": "EGxXwApYnffSbEAXLT3s/DYJQ2icTfP3IWtsf7LM5kw=\n",
+        "ETag": "W/\"fc9f503d5c3b9b2b4b37ca4a4b8fb4bc\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "X-Request-Id": "e2dc8446-0716-417c-88d9-f4967e8f30bf",
+        "X-Runtime": "0.217516",
+        "Content-Length": "111"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000auth/sign_in\" -d '{\"team_name\":\"id\",\"email\":\"email@example.com\",\"password\":\"password\"}' -X POST \\\n\t-H \"Accept: application/json\" \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Host: example.org\" \\\n\t-H \"Cookie: \""
+    }
+  ]
+}

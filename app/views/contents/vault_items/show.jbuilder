@@ -1,0 +1,10 @@
+json.set! :id, @vault_item.id
+json.set! :web_address, @vault_item.decrypted_content["web_address"]
+json.set! :username, @vault_item.decrypted_content["username"]
+json.set! :password, @vault_item.decrypted_content["password"]
+json.set! :page_change_password, @vault_item.decrypted_content["change_password_page"]
+json.set! :page_login, @vault_item.decrypted_content["login_page"]
+json.set! :password_field, @vault_item.decrypted_content["password_field"]
+json.set! :username_field, @vault_item.decrypted_content["username_field"]
+json.set! :company, @vault_item.decrypted_content["company"]
+json.set! :company_field, @vault_item.decrypted_content["company_field"]
